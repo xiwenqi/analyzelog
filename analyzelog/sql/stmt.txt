@@ -1,0 +1,253 @@
+SELECT G.ID            gId,
+       G.PX_DESC       activityName2,
+       G.CREATE_DATE   createTime,
+       G.BILL_TYPE     billType,
+       S.CHANNELID     channelId,
+       S.BUID          buId,
+       S.SHOPID        shopId,
+       P.ID            id,
+       P.SKU_ID        skuId,
+       P.BRAN_ID       branId,
+       P.CAT_ID        catId,
+       P.SUPPLIER_ID   supplierId,
+       P.SKU_NAME      skuName,
+       P.BRAND_NAME    brandName,
+       P.CATEGORY_NAME categoryName,
+       P.OBJECT_NAME   objectName,
+       P.MJ_ID         mjId,
+       P.FQ_ID         fqId,
+       P.YQ_ID         yqId,
+       P.ZK_ID         zkId,
+       P.RULE_ID       ruleId,
+       P.MEMO          memo,
+       P.CAT_CODE      catCode,
+       P.BRAN_CODE     branCode,
+       P.SUPPLIER_CODE supplierCode,
+       P.SKU_CODE      skuCode,
+       P.GZSZ_ID       gzszId,
+       P.MZ_ID         mzId,
+       P.XY_ID         xyId,
+       P.STATUS        status,
+       P.Q_ID          qId
+  FROM PX_ACTIVITY_SCHEDULE          D,
+       PX_ACTIVITY_PARTICIPANT_SCOPE S,
+       PX_ACTIVITY_GOODS             G,
+       PX_ACTIVITY_GOODS_DETAIL      P
+ WHERE D.ID = S.ACTIVITY_ID
+   AND D.ID = G.SCHEDULE_ID
+   AND G.STATUS = 2
+   AND D.START_TIME <= SYSDATE
+   AND D.END_TIME >= SYSDATE
+   AND G.START_TIME <= SYSDATE
+   AND G.END_TIME >= SYSDATE
+   AND P.RULE_ID = G.ID
+   AND (S.CHANNELID = ? OR S.CHANNELID = '0')
+   AND ((S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))) or
+       (S.SHOPID = ? OR S.SHOPID = '0') AND (S.BUID = ? OR S.BUID = '0') AND
+       ((P.SKU_ID = '0' OR P.SKU_ID = ?) OR
+       (P.SKU_ID IS NULL AND
+       (P.BRAN_ID = ? OR P.SUPPLIER_ID = ? OR P.Cat_Id = ?))))
+ ORDER BY G.CREATE_DATE DESC
