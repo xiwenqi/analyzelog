@@ -72,7 +72,7 @@ public class FetchSqlStatement {
 
 	
 	private static List<String> replaceByRegex(List<String> paramSplits,String key,String regex,String replacement,String prefix,String suffix) {		
-		List<String> list = paramSplits.stream().map(param->{return param.indexOf(key)>-1?prefix + param.replaceAll(regex, replacement).trim()+ suffix:param;}).collect(Collectors.toList());
+		List<String> list = paramSplits.stream().map(param->{return param.indexOf(key)>-1?prefix + param.trim().replaceAll(regex, replacement)+ suffix:param;}).collect(Collectors.toList());
 		return list;
 	}
 
