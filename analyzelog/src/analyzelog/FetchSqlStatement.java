@@ -10,6 +10,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 使用场景：适用于从日志中排查问题有时候sql语句参数很多，尤其是拼接型，并且往往附加了类型信息，例如“ 3(String), -1(String), 1000(BigDecimal),” 
+ * 这种场景下还原sql到PLSQL中查询很耗时，小程序提供转换功能
+ * 使用方法：
+ * 1.	将日志中sql语句保存在sql目录下命名为stmt.txt;将日志中参数保存在sql目录下命名为param.txt;(如要改名请调整相应目录和文件名)
+ * 2.	执行main将打印转换后的语句
+ * 3.	目前支持了String和BigDecimal的转换，如有其它类型自行添加相应的replaceXXX方法
+ * @author XWQ72
+ *
+ */
 public class FetchSqlStatement {
 
 	public static void main(String[] args) throws Exception {
